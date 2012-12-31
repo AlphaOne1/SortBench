@@ -39,6 +39,7 @@ OPT	=-pipe -O2 -march=i686 -fomit-frame-pointer
 MODULES=	BubbleSort.so	\
 		InsertionSort.so\
 		SelectionSort.so\
+		ShellSort.so	\
 		StoogeSort.so	\
 		BinaryTree.so	\
 		CountingSort.so	\
@@ -75,6 +76,9 @@ libInsertionSort.so: InsertionSort.cc insertionsort.h sortbase.h
 	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
 
 libSelectionSort.so: SelectionSort.cc selectionsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libShellSort.so: ShellSort.cc shellsort.h sortbase.h
 	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
 
 libStoogeSort.so: StoogeSort.cc stoogesort.h sortbase.h
