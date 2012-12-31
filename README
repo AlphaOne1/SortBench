@@ -1,0 +1,32 @@
+##########################
+#  Readme for sortbench  #
+##########################
+
+The sortbench is a benchmark framework for sorting algorithms. It already includes
+some well known algorithms and is easily extensible. I would be happy to have more
+contributions of algorithms, as there is a vast number available.
+
+# Editing #
+
+For editing I recommend vim or QtCreator (that luckily also has a vi-mode). The
+code style is simple. Always use tabs to indent. Indent and tab size are both set
+to eight. For easy beginning I included a style file for QtCreator and every file
+has a modeline for vi on the top.
+
+# Contributing #
+
+The modules follow some simple rules. Every sorting algorithm is a class derived
+from SortBase. Every module further defines to _C_ functions, create and destroy.
+The benchmark uses these create and destroy function to contruct and destruct a
+sorting algorithm class. For further details on the interface, consult the source
+code and its contained documentation.
+
+# Usage #
+
+The main program, sortbench, has few parameters:
+
+	$ sortbench <num_elements> <random_seed> <module_list>
+
+(example: ./sortbench 1000 0 ./libHeapSort.so)
+
+
