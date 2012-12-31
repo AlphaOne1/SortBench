@@ -1,0 +1,109 @@
+# vim: filetype=make
+#################################################################################
+#										#
+#  Copyright (c) 2007-2010, Alexander Adam					#
+#										#
+#  All rights reserved.								#
+#										#
+#  Redistribution and use in source and binary forms, with or without		#
+#  modification, are permitted provided that the following conditions are met:	#
+#										#
+#	-	Redistributions of source code must retain the above copyright	#
+#		notice, this list of conditions and the following disclaimer.	#
+#	-	Redistributions in binary form must reproduce the above		#
+#		copyright notice, this list of conditions and the following	#
+#		disclaimer in the documentation and/or other materials provided	#
+#		with the distribution.						#
+#	-	The names of its contributors may be used to endorse or promote	#
+#		products derived from this software without specific prior	#
+#		written permission.						#
+#										#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS		#
+#  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT		#
+#  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR	#
+#  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER	#
+#  OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,	#
+#  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,		#
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR		#
+#  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF	#
+#  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING		#
+#  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS		#
+#  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.			#
+#										#
+#################################################################################
+
+CXX	=c++
+DEBUG	=-Wall -Wextra -pedantic -Wfloat-equal -Werror=uninitialized
+OPT	=-pipe -O2 -march=i686 -fomit-frame-pointer
+
+MODULES=	BubbleSort.so	\
+		InsertionSort.so\
+		SelectionSort.so\
+		StoogeSort.so	\
+		BinaryTree.so	\
+		CountingSort.so	\
+		HeapSort.so	\
+		MergeSort.so	\
+		QuickSort.so	\
+		RadixSort.so	\
+		STLSort.so
+
+.PHONY: all clean
+all: sortbench $(foreach mod,${MODULES},lib${mod})
+clean:
+	-rm -f sortbench lib* *.o
+
+sortbench: Main.o Bench.o SortBase.o
+	${CXX} ${DEBUG} ${OPT} -rdynamic -ldl -o $@ $^
+
+Main.o: Main.cc bench.h
+	${CXX} ${DEBUG} ${OPT} -c Main.cc
+
+Bench.o: Bench.cc bench.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -c Bench.cc
+
+SortBase.o: SortBase.cc sortbase.h
+	${CXX} ${DEBUG} ${OPT} -c SortBase.cc
+
+################################################################################
+## Slow Algorithms >= N^2 (average)
+
+libBubbleSort.so: BubbleSort.cc bubblesort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libInsertionSort.so: InsertionSort.cc insertionsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libSelectionSort.so: SelectionSort.cc selectionsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libStoogeSort.so: StoogeSort.cc stoogesort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+################################################################################
+## Faster Algorithms < N^2 (average)
+
+libBinaryTree.so: BinaryTree.cc binarytree.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libCombSort.so: CombSort.cc combsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libCountingSort.so: CountingSort.cc countingsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libHeapSort.so: HeapSort.cc heapsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+	
+libMergeSort.so: MergeSort.cc mergesort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libQuickSort.so: QuickSort.cc quicksort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libRadixSort.so: RadixSort.cc radixsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
+libSTLSort.so: STLSort.cc stlsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
