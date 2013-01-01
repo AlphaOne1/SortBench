@@ -1,7 +1,7 @@
 // vim: ts=8:sw=8:cindent
 /********************************************************************************
 *										*
-*  Copyright (c) 2008-2012, Alexander Adam					*
+*  Copyright (c) 2008-2013, Alexander Adam					*
 *										*
 *  All rights reserved.								*
 *										*
@@ -71,10 +71,13 @@ const char* SelectionSort::name()
 
 void SelectionSort::sort()
 {
+	bench::feld_t::size_type	small_pos;
+	bench::ele_t			small_ele;
+
 	for (bench::feld_t::size_type ipos = 0; ipos < feld.size(); ++ipos)
 	{
-		bench::feld_t::size_type	small_pos = ipos;
-		bench::ele_t			small_ele = feld[ ipos];
+		small_pos = ipos;
+		small_ele = feld[ ipos];
 
 		for (bench::feld_t::size_type i = ipos+1; i < feld.size(); ++i)
 		{
