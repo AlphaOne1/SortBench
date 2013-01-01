@@ -1,7 +1,7 @@
 // vim: ts=8:sw=8:cindent
 /********************************************************************************
 *										*
-*  Copyright (c) 2007-2010, Alexander Adam					*
+*  Copyright (c) 2008-2013, Alexander Adam					*
 *										*
 *  All rights reserved.								*
 *										*
@@ -32,27 +32,99 @@
 *										*
 ********************************************************************************/
 
-#ifndef __LOCATIONS_H__
-#define __LOCATIONS_H__
+#include <algorithm>
 
-#include <cstdlib>
+#include "minmaxsort.h"
 
-namespace bench {
-const char* LOCATIONS [] = {	@BinaryTree_LOCATION@,
-				@BubbleSort_LOCATION@,
-				@CombSort_LOCATION@,
-				@CountingSort_LOCATION@,
-				@HeapSort_LOCATION@,
-				@InsertionSort_LOCATION@,
-				@MergeSort_LOCATION@,
-				@MinMaxSort_LOCATION@,
-				@QuickSort_LOCATION@,
-				@RadixSort_LOCATION@,
-				@SelectionSort_LOCATION@,
-				@ShellSort_LOCATION@,
-				@STLSort_LOCATION@,
-				@StoogeSort_LOCATION@,
-				NULL
-};
+using namespace minmaxsort;
+
+extern "C"
+{
+	EXPORT_API class bench::SortBase* create()
+	{
+		return dynamic_cast< class bench::SortBase*>(new class MinMaxSort());
+	}
+
+	EXPORT_API void destroy( class bench::SortBase* x)
+	{
+		delete dynamic_cast< class MinMaxSort*>( x);
+	}
 }
-#endif /* __LOCATIONS_H__ */
+
+const char MinMaxSort::m_sort_name[] = "MinMaxSort";
+
+MinMaxSort::MinMaxSort()
+{}
+
+MinMaxSort::~MinMaxSort()
+{}
+
+enum bench::SortBase::SpeedGrade MinMaxSort::speedGrade()
+{
+	return bench::SortBase::SLOW;
+}
+
+const char* MinMaxSort::name()
+{
+	return MinMaxSort::m_sort_name;
+}
+
+void MinMaxSort::sort()
+{
+	bench::feld_t::size_type	small_pos;
+	bench::ele_t			small_ele;
+	bench::feld_t::size_type	big_pos;
+	bench::ele_t			big_ele;
+
+	bench::feld_t::size_type	imin = 0,
+					imax = feld.size()-1;
+
+	while (imin < imax)
+	{
+		small_pos	= imin;
+		small_ele	= feld[ imin];
+
+		big_pos		= imax;
+		big_ele		= feld[ imax];
+
+		for (bench::feld_t::size_type i = imin; i <= imax; ++i)
+		{
+			if (feld[ i] < small_ele)
+			{
+				small_pos = i;
+				small_ele = feld[ i];
+			}
+			if (feld[ i] > big_ele)
+			{
+				big_pos = i;
+				big_ele = feld[ i];
+			}
+		}
+
+		if ((small_pos == imax) && (big_pos == imin))
+		{
+			feld[ small_pos]= big_ele;
+			feld[ big_pos]	= small_ele;
+		}
+		else if (small_pos == imax)
+		{
+			feld[ small_pos]	= feld[ imin];
+			feld[ imin]		= small_ele;
+
+			feld[ big_pos]		= feld[ imax];
+			feld[ imax]		= big_ele;
+		}
+		else
+		{
+			feld[ big_pos]		= feld[ imax];
+			feld[ imax]		= big_ele;
+			
+			feld[ small_pos]	= feld[ imin];
+			feld[ imin]		= small_ele;
+		}
+
+		++imin;
+		--imax;
+	}
+}
+

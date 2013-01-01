@@ -1,7 +1,7 @@
 // vim: ts=8:sw=8:cindent
 /********************************************************************************
 *										*
-*  Copyright (c) 2007-2010, Alexander Adam					*
+*  Copyright (c) 2008-2013, Alexander Adam					*
 *										*
 *  All rights reserved.								*
 *										*
@@ -32,27 +32,28 @@
 *										*
 ********************************************************************************/
 
-#ifndef __LOCATIONS_H__
-#define __LOCATIONS_H__
+#ifndef __MINMAXSORT_H__
+#define __MINMAXSORT_H__
 
-#include <cstdlib>
+#include "sortbase.h"
 
-namespace bench {
-const char* LOCATIONS [] = {	@BinaryTree_LOCATION@,
-				@BubbleSort_LOCATION@,
-				@CombSort_LOCATION@,
-				@CountingSort_LOCATION@,
-				@HeapSort_LOCATION@,
-				@InsertionSort_LOCATION@,
-				@MergeSort_LOCATION@,
-				@MinMaxSort_LOCATION@,
-				@QuickSort_LOCATION@,
-				@RadixSort_LOCATION@,
-				@SelectionSort_LOCATION@,
-				@ShellSort_LOCATION@,
-				@STLSort_LOCATION@,
-				@StoogeSort_LOCATION@,
-				NULL
-};
+namespace minmaxsort
+{
+	class MinMaxSort : public bench::SortBase
+	{
+		public:		MinMaxSort	();
+				~MinMaxSort	();
+
+			void	sort		();
+			
+			enum bench::SortBase::SpeedGrade
+				speedGrade	();
+			const char*
+				name		();
+
+		protected:
+			static const char m_sort_name[];
+	};
 }
-#endif /* __LOCATIONS_H__ */
+
+#endif // __MINMAXSORT_H__

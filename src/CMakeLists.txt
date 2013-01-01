@@ -177,6 +177,17 @@ ADD_TEST	( NAME insertion_sort_test
 GET_TARGET_PROPERTY( InsertionSort_LOCATION InsertionSort LOCATION)
 SET( InsertionSort_LOCATION \"${InsertionSort_LOCATION}\")
 
+ADD_LIBRARY	( MinMaxSort MODULE
+			MinMaxSort.cc
+			minmaxsort.h
+		)
+TARGET_LINK_LIBRARIES	( MinMaxSort SortBase )
+ADD_TEST	( NAME minmax_sort_test
+		  COMMAND sortbench ${SLOW_ALGO_TEST_SIZE} 1 $<TARGET_FILE:MinMaxSort>
+)
+GET_TARGET_PROPERTY( MinMaxSort_LOCATION MinMaxSort LOCATION)
+SET( MinMaxSort_LOCATION \"${MinMaxSort_LOCATION}\")
+
 ADD_LIBRARY	( SelectionSort MODULE
 			SelectionSort.cc
 			selectionsort.h
