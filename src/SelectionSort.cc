@@ -32,8 +32,6 @@
 *										*
 ********************************************************************************/
 
-#include <algorithm>
-
 #include "selectionsort.h"
 
 using namespace selsort;
