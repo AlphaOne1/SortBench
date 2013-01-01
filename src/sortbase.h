@@ -82,26 +82,27 @@ namespace bench
 	 */
 	class SORTBASE_API SortBase
 	{
-		public: enum SpeedGrade
+		public: //! Theoretische Geschwindigkeitseinstufung des Algorithmus
+			enum SpeedGrade
 			{
-				VERY_SLOW	= 1,
-				SLOW		= 2,
-				MEDIUM		= 3,
-				FAST		= 4,
-				UNDEFINED	= 0
+				VERY_SLOW	= 1,	//!< schlechter als O(n^2)
+				SLOW		= 2,	//!< O(n^2)
+				MEDIUM		= 3,	//!< original O(n^2), verbessert
+				FAST		= 4,	//!< O(n log n)
+				UNDEFINED	= 0 	//!< unbekanntes Laufzeitverhalten
 			};
 					SortBase	();
 			virtual 	~SortBase	();
 
 			virtual void	pre		( const bench::feld_t&);// Vorarbeiten
-			virtual void	sort		() = 0;		// eigentliches Sortieren
+			virtual void	sort		() = 0;		//!< eigentliches Sortieren
 			virtual void	post		();		// Nacharbeiten
 				bool	test		();		// Test auf Korrektheit
 
 			virtual	enum SpeedGrade
-					speedGrade	() = 0;		// Geschwindigkeit
+					speedGrade	() = 0;		//!< Geschwindigkeit
 			virtual const char*
-					name		() = 0;		// Namensausgabe
+					name		() = 0;		//!< Namensausgabe
 
 
 				void	output		( std::ostream&);// Feld ausgeben
