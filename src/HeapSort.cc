@@ -86,19 +86,23 @@ void HeapSort::sort()
 void HeapSort::post()
 {}
 
-void HeapSort::reheap( const bench::feld_t::size_type x, const bench::feld_t::size_type len)
+void HeapSort::reheap( bench::feld_t::size_type x, const bench::feld_t::size_type len)
 {
-	int wahl = 1;
-	if (2*x+1 <= len)
+	unsigned short decision;
+
+	while (2*x+1 <= len)
 	{
+		decision = 1;
 		if ((2*x+2 <= len) && (feld[ 2*x+2] > feld[ 2*x+1]))
-			wahl = 2;
+			decision = 2;
 		
-		if (feld[ x] < feld[ 2*x+wahl])
+		if (feld[ x] < feld[ 2*x+decision])
 		{
-			std::swap( feld[ x], feld[ 2*x+wahl]);
-			reheap( 2*x+wahl, len);
+			std::swap( feld[ x], feld[ 2*x+decision]);
+			x = 2*x+decision;
 		}
+		else
+			break;
 	}
 }
 /*

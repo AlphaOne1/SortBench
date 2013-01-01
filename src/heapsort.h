@@ -53,8 +53,8 @@ namespace heap
 				name		();
 
 		protected:
-			void	reheap		( const bench::feld_t::size_type, const bench::feld_t::size_type);
-			int	leafsearch	( const int, const int);
+			void	reheap		( bench::feld_t::size_type, const bench::feld_t::size_type);
+			//int	leafsearch	( const int, const int);
 			
 			static const char m_sort_name[];
 	};
