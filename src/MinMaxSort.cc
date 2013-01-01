@@ -32,8 +32,6 @@
 *										*
 ********************************************************************************/
 
-#include <algorithm>
-
 #include "minmaxsort.h"
 
 using namespace minmaxsort;
@@ -76,10 +74,7 @@ void MinMaxSort::sort()
 	bench::feld_t::size_type	big_pos;
 	bench::ele_t			big_ele;
 
-	bench::feld_t::size_type	imin = 0,
-					imax = feld.size()-1;
-
-	while (imin < imax)
+	for (bench::feld_t::size_type imin = 0, imax = feld.size()-1; imin < imax; ++imin, --imax)
 	{
 		small_pos	= imin;
 		small_ele	= feld[ imin];
@@ -101,18 +96,21 @@ void MinMaxSort::sort()
 			}
 		}
 
-		if ((small_pos == imax) && (big_pos == imin))
+		if (small_pos == imax)
 		{
-			feld[ small_pos]= big_ele;
-			feld[ big_pos]	= small_ele;
-		}
-		else if (small_pos == imax)
-		{
-			feld[ small_pos]	= feld[ imin];
-			feld[ imin]		= small_ele;
+			if (big_pos == imin)
+			{
+				feld[ small_pos]= big_ele;
+				feld[ big_pos]	= small_ele;
+			}
+			else
+			{
+				feld[ small_pos]	= feld[ imin];
+				feld[ imin]		= small_ele;
 
-			feld[ big_pos]		= feld[ imax];
-			feld[ imax]		= big_ele;
+				feld[ big_pos]		= feld[ imax];
+				feld[ imax]		= big_ele;
+			}
 		}
 		else
 		{
@@ -122,9 +120,6 @@ void MinMaxSort::sort()
 			feld[ small_pos]	= feld[ imin];
 			feld[ imin]		= small_ele;
 		}
-
-		++imin;
-		--imax;
 	}
 }
 
