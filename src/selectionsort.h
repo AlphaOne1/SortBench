@@ -1,7 +1,7 @@
 // vim: ts=8:sw=8:cindent
 /********************************************************************************
 *										*
-*  Copyright (c) 2008-2010, Alexander Adam					*
+*  Copyright (c) 2008-2013, Alexander Adam					*
 *										*
 *  All rights reserved.								*
 *										*
@@ -32,8 +32,8 @@
 *										*
 ********************************************************************************/
 
-#ifndef __INSERTIONSORT_H__
-#define __INSERTIONSORT_H__
+#ifndef __SELECTIONSORT_H__
+#define __SELECTIONSORT_H__
 
 #include "sortbase.h"
 
@@ -56,4 +56,4 @@ namespace selsort
 	};
 }
 
-#endif // __INSERTIONSORT_H__
+#endif // __SELECTIONSORT_H__
