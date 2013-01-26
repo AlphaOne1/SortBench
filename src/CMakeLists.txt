@@ -62,16 +62,16 @@ SET( BAD_ALGO_TEST_SIZE  1500)
 ##	Fast Algorithms							       ##
 #################################################################################
 
-ADD_LIBRARY	( BinaryTree MODULE
-			BinaryTree.cc
-			binarytree.h
+ADD_LIBRARY	( BinaryTreeSort MODULE
+			BinaryTreeSort.cc
+			binarytreesort.h
 		)
-TARGET_LINK_LIBRARIES	( BinaryTree SortBase )
-ADD_TEST	( NAME binary_tree_test
-		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:BinaryTree>
+TARGET_LINK_LIBRARIES	( BinaryTreeSort SortBase )
+ADD_TEST	( NAME binary_tree_sort_test
+		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:BinaryTreeSort>
 		)
-GET_TARGET_PROPERTY( BinaryTree_LOCATION BinaryTree LOCATION)
-SET( BinaryTree_LOCATION \"${BinaryTree_LOCATION}\")
+GET_TARGET_PROPERTY( BinaryTreeSort_LOCATION BinaryTreeSort LOCATION)
+SET( BinaryTreeSort_LOCATION \"${BinaryTreeSort_LOCATION}\")
 
 ADD_LIBRARY	( CombSort MODULE
 			CombSort.cc

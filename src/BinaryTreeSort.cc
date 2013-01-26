@@ -33,7 +33,7 @@
 ********************************************************************************/
 
 #include <cstdlib>
-#include "binarytree.h"
+#include "binarytreesort.h"
 
 using namespace binary_tree;
 
