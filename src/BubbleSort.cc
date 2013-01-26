@@ -68,17 +68,18 @@ const char* BubbleSort::name()
 
 void BubbleSort::sort()
 {
-	bench::feld_t::size_type	n	= this->feld.size(),
-				 	new_n	= 0;
+	bench::feld_t::size_type	n	= this->feld.size()-1,
+					new_n;
 
-	while ( n > 1)
+	while ( n > 0)
 	{
+		new_n = 0;
 		for (bench::feld_t::size_type i = 0; i < n; ++i)
 		{
 			if (feld[ i] > feld[ i+1])
 			{
 				std::swap( feld[ i], feld[ i+1]);
-				new_n = i+1;
+				new_n = i;
 			}
 		}
 		n = new_n;
