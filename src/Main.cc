@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 
 	if (argc < 4)
 	{
-		std::cerr << "Fehler, richtige Benutzung: " << argv[ 0] << " <#Elemente> <Seed> <Modulliste>" << std::endl;
+		std::cerr << "Usage: " << argv[ 0] << " <#elements> <seed> <module list>" << std::endl;
 		return EXIT_FAILURE;
 	}
 
@@ -68,16 +68,16 @@ int main(int argc, char* argv[])
 
 	if (anz <= 0)
 	{
-		std::cerr << "Sie haben eine ungültige Anzahl eingegeben!" << std::endl;
+		std::cerr << "Invalid number of elements for sorting given!" << std::endl;
 		return EXIT_FAILURE;
 	}
 
 	myBench = new class bench::Bench( anz, seed);
 	myBench->init( 0);		//erstmal ungeordnet machen
 
-	std::cout	<< std::setw( 22)	<< std::left	<< "Modulname"
-			<< std::setw( 7)	<< std::right	<< "Ordnung"
-			<< std::setw( 15)	<< "Zeit in us" << std::endl;
+	std::cout	<< std::setw( 22)	<< std::left	<< "module name"
+			<< std::setw( 7)	<< std::right	<< "order"
+			<< std::setw( 15)	<< "time in us" << std::endl;
 
 	for (int i = 3; i < argc; i++)
 	{

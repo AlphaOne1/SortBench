@@ -96,14 +96,14 @@ namespace {
 
 		if (!QueryPerformanceCounter( &t))
 		{
-			std::cerr << "Fehler beim Zeitmessen:" << std::endl
+			std::cerr << "Error measuring time:" << std::endl
 				  << last_error_string() << std::endl;
 			std::exit( EXIT_FAILURE);
 		}
 
 		if (!QueryPerformanceFrequency( &f))
 		{
-			std::cerr << "Fehler beim Zeitfrequenzmessen:" << std::endl
+			std::cerr << "Error measuring timer frequency:" << std::endl
 				  << last_error_string() << std::endl;
 			std::exit( EXIT_FAILURE);
 		}
@@ -205,7 +205,7 @@ long int Bench::test()
 {
 	if (this->aktmod == NULL)
 	{
-		std::cerr << "Jemand hat die Testfunktion aufgerufen, während kein Modul geladen war!" << std::endl;
+		std::cerr << "Somebody called the test function without having a module loaded!" << std::endl;
 		std::exit( EXIT_FAILURE);
 	}
 
@@ -219,7 +219,7 @@ long int Bench::test()
 
 	if (!this->aktmod->test())
 	{
-		std::cerr << "Das Modul " << aktmodname << " sortiert nicht richtig!" << std::endl;
+		std::cerr << "The module " << aktmodname << " does not sort right!" << std::endl;
 		this->found_bad = true;
 		this->aktmod->output( std::cout);
 	}
@@ -250,7 +250,7 @@ void Bench::loadmod( std::string modname)
 
 	if (aktmod || create || destroy)
 	{
-		std::cerr << "Jemand hat die Ladefunktion aufgerufen, während ein anderes Modul geladen war!" << std::endl;
+		std::cerr << "Somebody called the loader function with having another module loaded!" << std::endl;
 		std::exit( EXIT_FAILURE);
 	}
 	
@@ -259,7 +259,7 @@ void Bench::loadmod( std::string modname)
 #ifndef _MSC_VER
 	if( (this->dlhandle = dlopen( aktmodname.c_str(), RTLD_NOW )) == NULL)
 	{
-		std::cerr << "Fehler beim Laden des Modules: " << aktmodname << std::endl
+		std::cerr << "Error loading the module: " << aktmodname << std::endl
 			  << dlerror() << std::endl;
 		std::exit( EXIT_FAILURE);
 	}
@@ -270,7 +270,7 @@ void Bench::loadmod( std::string modname)
 	this->dlhandle = LoadLibrary( aktmodname.c_str());
 	if (this->dlhandle == NULL)
 	{
-		std::cerr << "Fehler beim Laden des Modules: " << this->aktmodname << std::endl
+		std::cerr << "Error loading the module: " << this->aktmodname << std::endl
 			  << last_error_string() << std::endl;
 		std::exit( EXIT_FAILURE);
 	}
@@ -281,7 +281,7 @@ void Bench::loadmod( std::string modname)
 
 	if (this->create == NULL)
 	{
-		std::cerr << "Fehler beim Laden von destroy: "
+		std::cerr << "Error loading destroy: "
 #ifndef _MSC_VER
 			  << dlerror()
 #else
@@ -300,7 +300,7 @@ void Bench::loadmod( std::string modname)
 
 	if (this->destroy == NULL)
 	{
-		std::cerr << "Fehler beim Laden von create: "
+		std::cerr << "Error loading create: "
 #ifndef _MSC_VER
 			  << dlerror()
 #else
@@ -320,7 +320,7 @@ void Bench::unloadmod()
 {
 	if (!(aktmod && create && destroy))
 	{
-		std::cerr << "Jemand hat die Entladefunktion aufgerufen, obwohl kein Modul geladen war!" << std::endl;
+		std::cerr << "Somebody called the unload function withouth having a module loaded!" << std::endl;
 		std::exit( EXIT_FAILURE);
 	}
 	
@@ -329,14 +329,14 @@ void Bench::unloadmod()
 #ifndef _MSC_VER
 	if (dlclose(this->dlhandle))
 	{
-		std::cerr << "Fehler beim Entladen des Modules: " << aktmodname << std::endl
+		std::cerr << "Error unloading the module: " << aktmodname << std::endl
 			  << dlerror() << std::endl;
 		std::exit( EXIT_FAILURE);
 	}
 #else
 	if ( !FreeLibrary( this->dlhandle))
 	{
-		std::cerr << "Fehler beim Entladen des Modules: " << aktmodname << std::endl
+		std::cerr << "Error unloading the module: " << aktmodname << std::endl
 			  << last_error_string() << std::endl;
 		std::exit( EXIT_FAILURE);
 	}
