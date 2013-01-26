@@ -161,8 +161,6 @@ void ShellSort::generate_sub_indices( bench::feld_t::size_type s)
 		++i;
 	}
 
-	this->sub_indices.pop_back();
-
 #ifdef SHELLSORT_DEBUG_OUT
 	for (sub_ind_t i = 0; i < this->sub_indices.size(); ++i)
 		std::cout << i << ": " << this->sub_indices[ i] << std::endl;
