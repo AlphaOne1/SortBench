@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 	long			anz;
 	long			seed;
 	bool			found_bad = false;
-	
+
 	if (argc < 4)
 	{
 		std::cerr << "Fehler, richtige Benutzung: " << argv[ 0] << " <#Elemente> <Seed> <Modulliste>" << std::endl;
@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
 	for (int i = 3; i < argc; i++)
 	{
 		myBench->loadmod( argv[ i]);
-	
+
 		long int zeit = myBench->test();
 
 		if (myBench->badSorter())
@@ -90,12 +90,14 @@ int main(int argc, char* argv[])
 			found_bad = true;
 		}
 
-		std::cout	<< std::setw( 22)	<< std::left << myBench->getAktModName() 
+		std::cout	<< std::setw( 22)	<< std::left << myBench->getAktModName()
 				<< std::setw( 7)	<< std::right<< myBench->getOrdnung()
 				<< std::setw( 15)	<< zeit	<< std::endl;
-		
+
 		myBench->unloadmod();
 	}
+
+	delete myBench;
 
 	if (found_bad)
 		return EXIT_FAILURE;
