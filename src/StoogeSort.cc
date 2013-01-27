@@ -1,7 +1,7 @@
 // vim: ts=8:sw=8:cindent
 /********************************************************************************
 *										*
-*  Copyright (c) 2007-2012, Alexander Adam					*
+*  Copyright (c) 2007-2013, Alexander Adam					*
 *										*
 *  All rights reserved.								*
 *										*
@@ -34,17 +34,16 @@
 
 #include "stoogesort.h"
 
-using namespace bench;
 using namespace stooge;
 
 extern "C"
 {
-	EXPORT_API class SortBase* create()
+	EXPORT_API class bench::SortBase* create()
 	{
-		return dynamic_cast< class SortBase*>(new class StoogeSort());
+		return dynamic_cast< class bench::SortBase*>(new class StoogeSort());
 	}
 
-	EXPORT_API void destroy( class SortBase* x)
+	EXPORT_API void destroy( class bench::SortBase* x)
 	{
 		delete dynamic_cast< class StoogeSort*>( x);
 	}
@@ -75,7 +74,7 @@ void StoogeSort::sort()
 
 void StoogeSort::stooge_sort( bench::feld_t& x, bench::feld_t::size_type anf, bench::feld_t::size_type end)
 {
-	ele_t	zw;
+	bench::ele_t	zw;
 
 	if (feld[ anf] > feld[ end])
 	{
