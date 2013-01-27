@@ -1,6 +1,6 @@
 #################################################################################
 #										#
-#  Copyright (c) 2007-2012, Alexander Adam					#
+#  Copyright (c) 2007-2013, Alexander Adam					#
 #										#
 #  All rights reserved.								#
 #										#
@@ -40,7 +40,7 @@ INCLUDE( ${QT_USE_FILE})
 
 SET( CPACK_PACKAGE_VERSION_MAJOR "1")
 SET( CPACK_PACKAGE_VERSION_MINOR "2")
-SET( CPACK_PACKAGE_VERSION_PATCH "1")
+SET( CPACK_PACKAGE_VERSION_PATCH "2")
 
 SET( CPACK_SOURCE_GENERATOR "TBZ2")
 SET( CPACK_SOURCE_IGNORE_FILES "/.*build/"
