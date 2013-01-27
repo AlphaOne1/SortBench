@@ -1,7 +1,7 @@
 // vim: ts=8:sw=8:cindent
 /********************************************************************************
 *										*
-*  Copyright (c) 2007-2012, Alexander Adam					*
+*  Copyright (c) 2007-2013, Alexander Adam					*
 *										*
 *  All rights reserved.								*
 *										*
