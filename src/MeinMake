@@ -1,7 +1,7 @@
 # vim: filetype=make
 #################################################################################
 #										#
-#  Copyright (c) 2007-2010, Alexander Adam					#
+#  Copyright (c) 2007-2013, Alexander Adam					#
 #										#
 #  All rights reserved.								#
 #										#
@@ -36,17 +36,19 @@ CXX	=c++
 DEBUG	=-Wall -Wextra -pedantic -Wfloat-equal -Werror=uninitialized
 OPT	=-pipe -O2 -march=i686 -fomit-frame-pointer
 
-MODULES=	BubbleSort.so	\
-		InsertionSort.so\
-		SelectionSort.so\
-		ShellSort.so	\
-		StoogeSort.so	\
-		BinaryTree.so	\
-		CountingSort.so	\
-		HeapSort.so	\
-		MergeSort.so	\
-		QuickSort.so	\
-		RadixSort.so	\
+MODULES=	BubbleSort.so		\
+		InsertionSort.so	\
+		MinMaxSort.so		\
+		SelectionSort.so	\
+		ShellSort.so		\
+		StoogeSort.so		\
+		BinaryTreeSort.so	\
+		CombSort.so		\
+		CountingSort.so		\
+		HeapSort.so		\
+		MergeSort.so		\
+		QuickSort.so		\
+		RadixSort.so		\
 		STLSort.so
 
 .PHONY: all clean
@@ -75,6 +77,9 @@ libBubbleSort.so: BubbleSort.cc bubblesort.h sortbase.h
 libInsertionSort.so: InsertionSort.cc insertionsort.h sortbase.h
 	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
 
+libMinMaxSort.so: MinMaxSort.cc minmaxsort.h sortbase.h
+	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
+
 libSelectionSort.so: SelectionSort.cc selectionsort.h sortbase.h
 	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
 
@@ -87,7 +92,7 @@ libStoogeSort.so: StoogeSort.cc stoogesort.h sortbase.h
 ################################################################################
 ## Faster Algorithms < N^2 (average)
 
-libBinaryTree.so: BinaryTree.cc binarytree.h sortbase.h
+libBinaryTreeSort.so: BinaryTreeSort.cc binarytreesort.h sortbase.h
 	${CXX} ${DEBUG} ${OPT} -fpic -shared -Wl,-export-dynamic -o $@ $<
 
 libCombSort.so: CombSort.cc combsort.h sortbase.h
