@@ -227,6 +227,6 @@ SET( StoogeSort_LOCATION \"${StoogeSort_LOCATION}\")
 
 CONFIGURE_FILE( config.in.h config.h)
 
-IF (QT4_FOUND)
+IF (USE_QT)
 	ADD_SUBDIRECTORY( gui/)
-ENDIF (QT4_FOUND)
+ENDIF (USE_QT)

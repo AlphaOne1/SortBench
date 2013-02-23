@@ -36,6 +36,9 @@
 
 #include <cstddef>
 
+#cmakedefine USE_GETTEXT
+#cmakedefine USE_QT
+
 namespace bench {
 /*! LOCATIONS contains the locations of each of the sorting modules
  */
