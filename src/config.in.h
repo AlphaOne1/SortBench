@@ -34,10 +34,12 @@
 #ifndef __CONFIG_IN_H__
 #define __CONFIG_IN_H__
 
-#include <cstdlib>
+#include <cstddef>
 
 namespace bench {
-const char* LOCATIONS [] = {	@BinaryTree_LOCATION@,
+/*! LOCATIONS contains the locations of each of the sorting modules
+ */
+const char* LOCATIONS [] = {	@BinaryTreeSort_LOCATION@,
 				@BubbleSort_LOCATION@,
 				@CombSort_LOCATION@,
 				@CountingSort_LOCATION@,
