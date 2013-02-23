@@ -1,7 +1,6 @@
-// vim: ts=8:sw=8:cindent
-/********************************************************************************
+/* vim: set ts=8 sw=8 cindent: **************************************************
 *										*
-*  Copyright (c) 2007-2010, Alexander Adam					*
+*  Copyright (c) 2012-2013, Alexander Adam					*
 *										*
 *  All rights reserved.								*
 *										*
