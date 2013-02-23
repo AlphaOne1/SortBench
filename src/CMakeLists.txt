@@ -225,7 +225,7 @@ ADD_TEST	( NAME stooge_sort_test
 GET_TARGET_PROPERTY( StoogeSort_LOCATION StoogeSort LOCATION)
 SET( StoogeSort_LOCATION \"${StoogeSort_LOCATION}\")
 
-CONFIGURE_FILE( locations.in.h locations.h)
+CONFIGURE_FILE( config.in.h config.h)
 
 IF (QT4_FOUND)
 	ADD_SUBDIRECTORY( gui/)

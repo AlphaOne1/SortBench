@@ -31,8 +31,8 @@
 *										*
 ********************************************************************************/
 
-#ifndef __LOCATIONS_H__
-#define __LOCATIONS_H__
+#ifndef __CONFIG_IN_H__
+#define __CONFIG_IN_H__
 
 #include <cstdlib>
 
@@ -54,4 +54,4 @@ const char* LOCATIONS [] = {	@BinaryTree_LOCATION@,
 				NULL
 };
 }
-#endif /* __LOCATIONS_H__ */
+#endif /* __CONFIG_IN_H__ */
