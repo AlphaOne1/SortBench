@@ -59,4 +59,15 @@ const char* LOCATIONS [] = {	@BinaryTreeSort_LOCATION@,
 				NULL
 };
 }
+
+/*
+ * gettext specific defines
+ */
+#ifndef USE_GETTEXT
+	#define gettext(s) (s)
+	#define ngettext(s, ps, n) ( (n > 1) ? (ps) : (s) )
+#else
+	#define LOCALE_DIR @Locale_LOCATION@
+#endif /* USE_GETTEXT */
+
 #endif /* __CONFIG_IN_H__ */

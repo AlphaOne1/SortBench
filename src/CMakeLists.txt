@@ -31,6 +31,8 @@
 #										#
 #################################################################################
 
+INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR})
+
 ADD_EXECUTABLE	( sortbench
 			Bench.cc
 			Main.cc
@@ -224,6 +226,8 @@ ADD_TEST	( NAME stooge_sort_test
 		)
 GET_TARGET_PROPERTY( StoogeSort_LOCATION StoogeSort LOCATION)
 SET( StoogeSort_LOCATION \"${StoogeSort_LOCATION}\")
+
+SET( Locale_LOCATION \"${CMAKE_CURRENT_BINARY_DIR}\")
 
 CONFIGURE_FILE( config.in.h config.h)
 

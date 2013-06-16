@@ -31,13 +31,19 @@
 *										*
 ********************************************************************************/
 
+#include <clocale>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 #include <iomanip>
 #include <string>
 
+#include "config.h"
 #include "bench.h"
+
+#ifdef USE_GETTEXT
+	#include <libintl.h>
+#endif /* USE_GETTEXT */
 
 /*!
  * Hauptfunktion.
@@ -52,6 +58,12 @@ int main(int argc, char* argv[])
 	long			anz;
 	long			seed;
 	bool			found_bad = false;
+
+	setlocale( LC_ALL, "");
+#ifdef USE_GETTEXT
+	bindtextdomain( "sortbench", LOCALE_DIR);
+	textdomain( "sortbench");
+#endif /* USE_GETTEXT */
 
 	if (argc < 4)
 	{
