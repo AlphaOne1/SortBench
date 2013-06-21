@@ -31,8 +31,6 @@
 *										*
 ********************************************************************************/
 
-#include <iostream>
-
 #include "heapsort.h"
 
 using namespace heap;
