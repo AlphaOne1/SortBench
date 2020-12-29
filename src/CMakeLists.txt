@@ -72,8 +72,6 @@ TARGET_LINK_LIBRARIES	( BinaryTreeSort SortBase )
 ADD_TEST	( NAME binary_tree_sort_test
 		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:BinaryTreeSort>
 		)
-GET_TARGET_PROPERTY( BinaryTreeSort_LOCATION BinaryTreeSort LOCATION)
-SET( BinaryTreeSort_LOCATION \"${BinaryTreeSort_LOCATION}\")
 
 ADD_LIBRARY	( CombSort MODULE
 			CombSort.cc
@@ -83,8 +81,6 @@ TARGET_LINK_LIBRARIES	( CombSort SortBase)
 ADD_TEST	( NAME comb_sort_test
 		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:CombSort>
 		)
-GET_TARGET_PROPERTY( CombSort_LOCATION CombSort LOCATION)
-SET( CombSort_LOCATION \"${CombSort_LOCATION}\")
 
 ADD_LIBRARY	( CountingSort MODULE
 			CountingSort.cc
@@ -94,9 +90,6 @@ TARGET_LINK_LIBRARIES	( CountingSort SortBase )
 ADD_TEST	( NAME counting_sort_test
 		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:CountingSort>
 		)
-GET_TARGET_PROPERTY( CountingSort_LOCATION CountingSort LOCATION)
-SET( CountingSort_LOCATION \"${CountingSort_LOCATION}\")
-
 
 ADD_LIBRARY	( HeapSort MODULE
 			HeapSort.cc
@@ -106,8 +99,6 @@ TARGET_LINK_LIBRARIES	( HeapSort SortBase )
 ADD_TEST	( NAME heap_sort_test
 		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:HeapSort>
 		)
-GET_TARGET_PROPERTY( HeapSort_LOCATION HeapSort LOCATION)
-SET( HeapSort_LOCATION \"${HeapSort_LOCATION}\")
 
 ADD_LIBRARY	( MergeSort MODULE
 			MergeSort.cc
@@ -117,8 +108,6 @@ TARGET_LINK_LIBRARIES	( MergeSort SortBase )
 ADD_TEST	( NAME merge_sort_test
 		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:MergeSort>
 		)
-GET_TARGET_PROPERTY( MergeSort_LOCATION MergeSort LOCATION)
-SET( MergeSort_LOCATION \"${MergeSort_LOCATION}\")
 
 ADD_LIBRARY	( QuickSort MODULE
 			QuickSort.cc
@@ -128,8 +117,6 @@ TARGET_LINK_LIBRARIES	( QuickSort SortBase )
 ADD_TEST	( NAME quick_sort_test
 		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:QuickSort>
 		)
-GET_TARGET_PROPERTY( QuickSort_LOCATION QuickSort LOCATION)
-SET( QuickSort_LOCATION \"${QuickSort_LOCATION}\")
 
 ADD_LIBRARY	( RadixSort MODULE
 			RadixSort.cc
@@ -139,8 +126,6 @@ TARGET_LINK_LIBRARIES	( RadixSort SortBase )
 ADD_TEST	( NAME radix_sort_test
 		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:RadixSort>
 		)
-GET_TARGET_PROPERTY( RadixSort_LOCATION RadixSort LOCATION)
-SET( RadixSort_LOCATION \"${RadixSort_LOCATION}\")
 
 ADD_LIBRARY	( STLSort MODULE
 			STLSort.cc
@@ -150,8 +135,6 @@ TARGET_LINK_LIBRARIES	( STLSort SortBase )
 ADD_TEST	( NAME stl_sort_test
 		  COMMAND sortbench ${FAST_ALGO_TEST_SIZE} 1 $<TARGET_FILE:STLSort>
 		)
-GET_TARGET_PROPERTY( STLSort_LOCATION STLSort LOCATION)
-SET( STLSort_LOCATION \"${STLSort_LOCATION}\")
 
 #################################################################################
 ##	Slow Algorithms							       ##
@@ -165,8 +148,6 @@ TARGET_LINK_LIBRARIES	( BubbleSort SortBase )
 ADD_TEST	( NAME bubble_sort_test
 		  COMMAND sortbench ${SLOW_ALGO_TEST_SIZE} 1 $<TARGET_FILE:BubbleSort>
 		)
-GET_TARGET_PROPERTY( BubbleSort_LOCATION BubbleSort LOCATION)
-SET( BubbleSort_LOCATION \"${BubbleSort_LOCATION}\")
 
 ADD_LIBRARY	( InsertionSort MODULE
 			InsertionSort.cc
@@ -176,8 +157,6 @@ TARGET_LINK_LIBRARIES	( InsertionSort SortBase )
 ADD_TEST	( NAME insertion_sort_test
 		  COMMAND sortbench ${SLOW_ALGO_TEST_SIZE} 1 $<TARGET_FILE:InsertionSort>
 		)
-GET_TARGET_PROPERTY( InsertionSort_LOCATION InsertionSort LOCATION)
-SET( InsertionSort_LOCATION \"${InsertionSort_LOCATION}\")
 
 ADD_LIBRARY	( MinMaxSort MODULE
 			MinMaxSort.cc
@@ -187,8 +166,6 @@ TARGET_LINK_LIBRARIES	( MinMaxSort SortBase )
 ADD_TEST	( NAME minmax_sort_test
 		  COMMAND sortbench ${SLOW_ALGO_TEST_SIZE} 1 $<TARGET_FILE:MinMaxSort>
 )
-GET_TARGET_PROPERTY( MinMaxSort_LOCATION MinMaxSort LOCATION)
-SET( MinMaxSort_LOCATION \"${MinMaxSort_LOCATION}\")
 
 ADD_LIBRARY	( SelectionSort MODULE
 			SelectionSort.cc
@@ -198,8 +175,6 @@ TARGET_LINK_LIBRARIES	( SelectionSort SortBase )
 ADD_TEST	( NAME selection_sort_test
 		  COMMAND sortbench ${SLOW_ALGO_TEST_SIZE} 1 $<TARGET_FILE:SelectionSort>
 		)
-GET_TARGET_PROPERTY( SelectionSort_LOCATION SelectionSort LOCATION)
-SET( SelectionSort_LOCATION \"${SelectionSort_LOCATION}\")
 
 ADD_LIBRARY	( ShellSort MODULE
 			ShellSort.cc
@@ -209,8 +184,6 @@ TARGET_LINK_LIBRARIES	( ShellSort SortBase )
 ADD_TEST	( NAME shell_sort_test
 		  COMMAND sortbench ${SLOW_ALGO_TEST_SIZE} 1 $<TARGET_FILE:ShellSort>
 		)
-GET_TARGET_PROPERTY( ShellSort_LOCATION ShellSort LOCATION)
-SET( ShellSort_LOCATION \"${ShellSort_LOCATION}\")
 
 #################################################################################
 ##	Very Slow Algorithms						       ##
@@ -224,12 +197,10 @@ TARGET_LINK_LIBRARIES	( StoogeSort SortBase )
 ADD_TEST	( NAME stooge_sort_test
 		  COMMAND sortbench ${BAD_ALGO_TEST_SIZE} 1 $<TARGET_FILE:StoogeSort>
 		)
-GET_TARGET_PROPERTY( StoogeSort_LOCATION StoogeSort LOCATION)
-SET( StoogeSort_LOCATION \"${StoogeSort_LOCATION}\")
 
 SET( Locale_LOCATION \"${CMAKE_CURRENT_BINARY_DIR}\")
 
-CONFIGURE_FILE( config.in.h config.h)
+FILE(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/config.h INPUT ${CMAKE_CURRENT_SOURCE_DIR}/config.in.h)
 
 IF (USE_QT)
 	ADD_SUBDIRECTORY( gui/)

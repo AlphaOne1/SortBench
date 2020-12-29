@@ -42,20 +42,20 @@
 namespace bench {
 /*! LOCATIONS contains the locations of each of the sorting modules
  */
-const char* LOCATIONS [] = {	@BinaryTreeSort_LOCATION@,
-				@BubbleSort_LOCATION@,
-				@CombSort_LOCATION@,
-				@CountingSort_LOCATION@,
-				@HeapSort_LOCATION@,
-				@InsertionSort_LOCATION@,
-				@MergeSort_LOCATION@,
-				@MinMaxSort_LOCATION@,
-				@QuickSort_LOCATION@,
-				@RadixSort_LOCATION@,
-				@SelectionSort_LOCATION@,
-				@ShellSort_LOCATION@,
-				@STLSort_LOCATION@,
-				@StoogeSort_LOCATION@,
+const char* LOCATIONS [] = {	"$<TARGET_FILE:BinaryTreeSort>",
+				"$<TARGET_FILE:BubbleSort>",
+				"$<TARGET_FILE:CombSort>",
+				"$<TARGET_FILE:CountingSort>",
+				"$<TARGET_FILE:HeapSort>",
+				"$<TARGET_FILE:InsertionSort>",
+				"$<TARGET_FILE:MergeSort>",
+				"$<TARGET_FILE:MinMaxSort>",
+				"$<TARGET_FILE:QuickSort>",
+				"$<TARGET_FILE:RadixSort>",
+				"$<TARGET_FILE:SelectionSort>",
+				"$<TARGET_FILE:ShellSort>",
+				"$<TARGET_FILE:STLSort>",
+				"$<TARGET_FILE:StoogeSort>",
 				NULL
 };
 }
