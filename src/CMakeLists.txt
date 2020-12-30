@@ -50,10 +50,21 @@ IF (WIN32)
 					SortBase
 				)
 ELSE(WIN32) 
-	TARGET_LINK_LIBRARIES	( sortbench
-					SortBase
-					dl
-				)
+	IF (USE_INTL)
+		TARGET_INCLUDE_DIRECTORIES( sortbench
+						PRIVATE ${Intl_INCLUDE_DIRS}
+					)
+		TARGET_LINK_LIBRARIES	( sortbench
+						SortBase
+						dl
+						${Intl_LIBRARIES}
+					)
+    ELSE(USE_INTL)
+		TARGET_LINK_LIBRARIES	( sortbench
+						SortBase
+						dl
+					)
+	ENDIF(USE_INTL)
 ENDIF(WIN32)
 
 SET( FAST_ALGO_TEST_SIZE 1000000)
@@ -200,7 +211,8 @@ ADD_TEST	( NAME stooge_sort_test
 
 SET( Locale_LOCATION \"${CMAKE_CURRENT_BINARY_DIR}\")
 
-FILE(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/config.h INPUT ${CMAKE_CURRENT_SOURCE_DIR}/config.in.h)
+CONFIGURE_FILE( config.in.h config.conf.h @ONLY)
+FILE(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/config.h INPUT ${CMAKE_CURRENT_BINARY_DIR}/config.conf.h)
 
 IF (USE_QT)
 	ADD_SUBDIRECTORY( gui/)

@@ -41,9 +41,9 @@
 #include "config.h"
 #include "bench.h"
 
-#ifdef USE_GETTEXT
+#ifdef USE_INTL
 	#include <libintl.h>
-#endif /* USE_GETTEXT */
+#endif /* USE_INTL */
 
 /*!
  * Hauptfunktion.
@@ -60,10 +60,10 @@ int main(int argc, char* argv[])
 	bool			found_bad = false;
 
 	setlocale( LC_ALL, "");
-#ifdef USE_GETTEXT
+#ifdef USE_INTL
 	bindtextdomain( "sortbench", LOCALE_DIR);
 	textdomain( "sortbench");
-#endif /* USE_GETTEXT */
+#endif /* USE_INTL */
 
 	if (argc < 4)
 	{

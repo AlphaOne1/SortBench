@@ -36,7 +36,7 @@
 
 #include <cstddef>
 
-#cmakedefine USE_GETTEXT
+#cmakedefine USE_INTL
 #cmakedefine USE_QT
 
 namespace bench {
@@ -63,11 +63,11 @@ const char* LOCATIONS [] = {	"$<TARGET_FILE:BinaryTreeSort>",
 /*
  * gettext specific defines
  */
-#ifndef USE_GETTEXT
+#ifndef USE_INTL
 	#define gettext(s) (s)
 	#define ngettext(s, ps, n) ( (n > 1) ? (ps) : (s) )
 #else
 	#define LOCALE_DIR @Locale_LOCATION@
-#endif /* USE_GETTEXT */
+#endif /* USE_INTL */
 
 #endif /* __CONFIG_IN_H__ */
