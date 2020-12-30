@@ -1,7 +1,7 @@
 #!/bin/sh
 #################################################################################
 #										#
-#  Copyright (c) 2013, Alexander Adam						#
+#  Copyright (c) 2013-2020, Alexander Adam						#
 #										#
 #  All rights reserved.								#
 #										#

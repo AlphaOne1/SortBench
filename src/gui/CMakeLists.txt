@@ -1,6 +1,6 @@
 # vim: set ts=8 sw=8 autoindent smartindent: ####################################
 #										#
-#  Copyright (c) 2012-2013, Alexander Adam					#
+#  Copyright (c) 2012-2020, Alexander Adam					#
 #										#
 #  All rights reserved.								#
 #										#
