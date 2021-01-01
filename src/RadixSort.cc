@@ -33,7 +33,7 @@
 
 #include "radixsort.h"
 
-using namespace radixsort;
+using namespace radix_sort;
 
 extern "C"
 {

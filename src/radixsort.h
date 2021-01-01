@@ -36,7 +36,7 @@
 
 #include "sortbase.h"
 
-namespace radixsort
+namespace radix_sort
 {
 	/*!
 	 * Diese Klasse nutzt digitales Sortieren - RadixSort.
